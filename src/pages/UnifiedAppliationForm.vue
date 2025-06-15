@@ -21,7 +21,9 @@
       </v-col>
     </v-row>
     <v-card class="mb-8 pa-6" elevation="2">
-      <v-card-title class="text-h5 text-center text-blue-darken-2 mb-4">BUILDING PERMIT APPLICATION</v-card-title>
+      <v-card-title class="text-h5 text-center text-blue-darken-2 mb-4"
+        >BUILDING PERMIT APPLICATION</v-card-title
+      >
 
       <v-form @submit.prevent="submitUnifiedApplication">
         <v-row dense>
@@ -29,7 +31,9 @@
             <v-row dense class="mb-4">
               <v-col cols="12" md="6">
                 <v-card flat border>
-                  <v-card-title class="text-subtitle-1 pb-0 text-grey-darken-1">Application Type</v-card-title>
+                  <v-card-title class="text-subtitle-1 pb-0 text-grey-darken-1"
+                    >Application Type</v-card-title
+                  >
                   <v-card-text>
                     <v-radio-group
                       v-model="applicationType.value.value"
@@ -37,15 +41,23 @@
                       hide-details="auto"
                       row
                     >
-                      <v-radio label="Simple" value="Simple"></v-radio>
-                      <v-radio label="Complex" value="Complex"></v-radio>
+                      <v-row>
+                        <v-col>
+                          <v-radio label="Simple" value="Simple"></v-radio>
+                        </v-col>
+                        <v-col>
+                          <v-radio label="Complex" value="Complex"></v-radio>
+                        </v-col>
+                      </v-row>
                     </v-radio-group>
                   </v-card-text>
                 </v-card>
               </v-col>
               <v-col cols="12" md="6">
                 <v-card flat border>
-                  <v-card-title class="text-subtitle-1 pb-0 text-grey-darken-1">Application Status</v-card-title>
+                  <v-card-title class="text-subtitle-1 pb-0 text-grey-darken-1"
+                    >Application Status</v-card-title
+                  >
                   <v-card-text>
                     <v-radio-group
                       v-model="applicationStatus.value.value"
@@ -53,9 +65,17 @@
                       hide-details="auto"
                       row
                     >
-                      <v-radio label="New" value="NEW"></v-radio>
-                      <v-radio label="Renew" value="RENEWAL"></v-radio>
-                      <v-radio label="Amendatory" value="AMENDED"></v-radio>
+                      <v-row>
+                        <v-col>
+                          <v-radio label="New" value="NEW"></v-radio>
+                        </v-col>
+                        <v-col>
+                          <v-radio label="Renewal" value="RENEWAL"></v-radio>
+                        </v-col>
+                        <v-col>
+                          <v-radio label="Amended" value="AMENDED"></v-radio>
+                        </v-col>
+                      </v-row>
                     </v-radio-group>
                   </v-card-text>
                 </v-card>
@@ -63,7 +83,9 @@
             </v-row>
           </v-col>
 
-          <v-col cols="12" class="text-h6 mb-2">Owner/Applicant Information</v-col>
+          <v-col cols="12" class="text-h6 mb-2"
+            >Owner/Applicant Information</v-col
+          >
           <v-col cols="12" md="3">
             <v-text-field
               label="Last Name"
@@ -242,7 +264,10 @@
           </v-col>
           <v-col
             cols="12"
-            v-if="scopeOfWork.value.value && scopeOfWork.value.value.includes('Others')"
+            v-if="
+              scopeOfWork.value.value &&
+              scopeOfWork.value.value.includes('Others')
+            "
           >
             <v-text-field
               label="Specify other Scope of Work"
@@ -252,7 +277,9 @@
             ></v-text-field>
           </v-col>
 
-          <v-col cols="12" class="text-h6 mb-2">Use or Character of Occupancy</v-col>
+          <v-col cols="12" class="text-h6 mb-2"
+            >Use or Character of Occupancy</v-col
+          >
           <v-col cols="12" md="6">
             <v-select
               label="Select Occupancy Group"
@@ -292,7 +319,9 @@
             <v-text-field
               label="Number of Units"
               v-model="numberOfUnits.value.value"
-              type="number"
+              onkeypress="return (event.charCode > 47 && event.charCode < 58)"
+              inputmode="numeric"
+              pattern="\d*"
               density="compact"
               variant="outlined"
             ></v-text-field>
@@ -301,7 +330,9 @@
             <v-text-field
               label="Number of Storey"
               v-model="numberOfStorey.value.value"
-              type="number"
+              onkeypress="return (event.charCode > 47 && event.charCode < 58)"
+              inputmode="numeric"
+              pattern="\d*"
               density="compact"
               variant="outlined"
             ></v-text-field>
@@ -310,7 +341,9 @@
             <v-text-field
               label="Total Floor Area (sq.m.)"
               v-model="totalFloorArea.value.value"
-              type="number"
+              onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode === 46)"
+              inputmode="numeric"
+              pattern="[0-9]*[.]?[0-9]*"
               density="compact"
               variant="outlined"
             ></v-text-field>
@@ -319,7 +352,9 @@
             <v-text-field
               label="Lot Area (sq.m.)"
               v-model="lotArea.value.value"
-              type="number"
+              onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode === 46)"
+              inputmode="numeric"
+              pattern="[0-9]*[.]?[0-9]*"
               density="compact"
               variant="outlined"
             ></v-text-field>
@@ -330,7 +365,9 @@
             <v-text-field
               label="Building"
               v-model="costBuilding.value.value"
-              type="number"
+              onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode === 46)"
+              inputmode="numeric"
+              pattern="[0-9]*[.]?[0-9]*"
               density="compact"
               variant="outlined"
             ></v-text-field>
@@ -339,7 +376,9 @@
             <v-text-field
               label="Electrical"
               v-model="costElectrical.value.value"
-              type="number"
+              onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode === 46)"
+              inputmode="numeric"
+              pattern="[0-9]*[.]?[0-9]*"
               density="compact"
               variant="outlined"
             ></v-text-field>
@@ -348,7 +387,9 @@
             <v-text-field
               label="Mechanical"
               v-model="costMechanical.value.value"
-              type="number"
+              onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode === 46)"
+              inputmode="numeric"
+              pattern="[0-9]*[.]?[0-9]*"
               density="compact"
               variant="outlined"
             ></v-text-field>
@@ -357,7 +398,9 @@
             <v-text-field
               label="Electronics"
               v-model="costElectronics.value.value"
-              type="number"
+              onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode === 46)"
+              inputmode="numeric"
+              pattern="[0-9]*[.]?[0-9]*"
               density="compact"
               variant="outlined"
             ></v-text-field>
@@ -366,18 +409,24 @@
             <v-text-field
               label="Plumbing"
               v-model="costPlumbing.value.value"
-              type="number"
+              onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode === 46)"
+              inputmode="numeric"
+              pattern="[0-9]*[.]?[0-9]*"
               density="compact"
               variant="outlined"
             ></v-text-field>
           </v-col>
 
-          <v-col cols="12" class="text-h6 mb-2">COST OF EQUIPMENT INSTALLED (₱)</v-col>
+          <v-col cols="12" class="text-h6 mb-2"
+            >COST OF EQUIPMENT INSTALLED (₱)</v-col
+          >
           <v-col cols="12" md="6">
             <v-text-field
               label="P (Equipment)"
               v-model="costEquipment.value.value"
-              type="number"
+              onkeypress="return (event.charCode > 47 && event.charCode < 58 || event.charCode === 46)"
+              inputmode="numeric"
+              pattern="[0-9]*[.]?[0-9]*"
               density="compact"
               variant="outlined"
             ></v-text-field>
@@ -403,251 +452,322 @@
             ></v-text-field>
           </v-col>
 
-          <v-col cols="12" class="text-h6 mb-2 text-center">AFFIDAVIT OF FULL-TIME INSPECTOR AND SUPERVISOR OF CONSTRUCTION WORKS</v-col>
-          <v-col cols="12" class="text-subtitle-1 mb-2">BOX 2: FULL-TIME INSPECTOR AND SUPERVISOR OF CONSTRUCTION WORKS (REPRESENTING THE OWNER)</v-col>
-          <v-col cols="12">
-            <v-text-field
-              label="Address (Inspector/Supervisor)"
-              v-model="inspectorAddress.value.value"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="9">
-            <v-text-field
-              label="Architect or Civil Engineer (Printed Name)"
-              v-model="architectCivilEngineerName.value.value"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="3">
-            <v-text-field
-              label="Date (of Signature)"
-              v-model="architectEngineerSignatureDate.value.value"
-              type="date"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12">
-            <v-text-field
-              label="Signature Over Printed Name"
-              density="compact"
-              variant="outlined"
-              readonly
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="3">
-            <v-text-field
-              label="PRC No."
-              v-model="prcNo.value.value"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="3">
-            <v-text-field
-              label="Validity"
-              v-model="prcValidity.value.value"
-              type="date"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="3">
-            <v-text-field
-              label="PTR No."
-              v-model="ptrNo.value.value"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="3">
-            <v-text-field
-              label="Date Issued (PTR)"
-              v-model="ptrDateIssued.value.value"
-              type="date"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="6">
-            <v-text-field
-              label="Issued at (PTR)"
-              v-model="ptrIssuedAt.value.value"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="6">
-            <v-text-field
-              label="TIN (Inspector/Supervisor)"
-              v-model="inspectorTin.value.value"
-              placeholder="e.g., 123-456-789-000 or 123456789"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
+          <v-col cols="12" class="text-h6 mb-2 text-center"
+            >AFFIDAVIT OF FULL-TIME INSPECTOR AND SUPERVISOR OF CONSTRUCTION
+            WORKS</v-col
+          >
+          <v-col cols="12" class="text-subtitle-1 mb-2"
+            >BOX 2: FULL-TIME INSPECTOR AND SUPERVISOR OF CONSTRUCTION WORKS
+            (REPRESENTING THE OWNER)</v-col
+          >
+          <v-row dense>
+            <v-col cols="12" md="6">
+              <div class="d-flex flex-column mt-16">
+                <span
+                  class="acknowledgment-line-long d-block mb-1 mx-auto"
+                ></span>
+                <p class="text-body-2 text-center">Architect or Engineer</p>
+                <p class="text-body-2 text-center">
+                  (Signed and Sealed Over Printed Name)
+                </p>
 
+                <div class="d-flex align-baseline mt-4">
+                  <span class="text-body-2 mr-2">Date</span>
+                  <v-text-field variant="underlined"></v-text-field>
+                </div>
+              </div>
+            </v-col>
+
+            <v-col cols="12" md="6">
+              <div class="d-flex flex-column mb-4">
+                <div class="d-flex align-baseline mb-2">
+                  <span class="text-body-2 mr-2">Address</span>
+                  <v-text-field
+                    v-model="inspectorAddress.value.value"
+                    density="compact"
+                    variant="underlined"
+                    hide-details="auto"
+                    class="flex-grow-1"
+                  ></v-text-field>
+                </div>
+                <div class="d-flex align-baseline mb-2">
+                  <span class="text-body-2 mr-2">PRC No.</span>
+                  <v-text-field
+                    v-model="prcNo.value.value"
+                    density="compact"
+                    variant="underlined"
+                    hide-details="auto"
+                    class="flex-grow-1 mr-4"
+                  ></v-text-field>
+                  <span class="text-body-2 mr-2">Validity</span>
+                  <v-text-field variant="underlined"></v-text-field>
+                </div>
+                <div class="d-flex align-baseline mb-2">
+                  <span class="text-body-2 mr-2">PTR No.</span>
+                  <v-text-field
+                    v-model="ptrNo.value.value"
+                    density="compact"
+                    variant="underlined"
+                    hide-details="auto"
+                    class="flex-grow-1 mr-4"
+                  ></v-text-field>
+                  <span class="text-body-2 mr-2">Date Issued</span>
+                  <v-text-field
+                    v-model="ptrDateIssued.value.value"
+                    variant="underlined"
+                  ></v-text-field>
+                </div>
+                <div class="d-flex align-baseline">
+                  <span class="text-body-2 mr-2">Issued at</span>
+                  <v-text-field
+                    v-model="ptrIssuedAt.value.value"
+                    density="compact"
+                    variant="underlined"
+                    hide-details="auto"
+                    class="flex-grow-1 mr-4"
+                  ></v-text-field>
+                  <span class="text-body-2 mr-2">TIN</span>
+                  <v-text-field
+                    v-model="inspectorTin.value.value"
+                    placeholder="e.g., 123-456-789-000"
+                    density="compact"
+                    variant="underlined"
+                    hide-details="auto"
+                    class="flex-grow-1"
+                  ></v-text-field>
+                </div>
+              </div>
+            </v-col>
+          </v-row>
+          <!-- BOX 3: APPLICANT -->
           <v-col cols="12" class="text-subtitle-1 mb-2">BOX 3: APPLICANT</v-col>
-          <v-col cols="12" md="9">
-            <v-text-field
-              label="Applicant Name (Printed Name)"
-              v-model="box3ApplicantName.value.value"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="3">
-            <v-text-field
-              label="Date (Applicant Signature)"
-              v-model="box3ApplicantSignatureDate.value.value"
-              type="date"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12">
-            <v-text-field
-              label="Signature Over Printed Name"
-              density="compact"
-              variant="outlined"
-              readonly
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12">
-            <v-text-field
-              label="Address (Applicant)"
-              v-model="box3ApplicantAddress.value.value"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="4">
-            <v-text-field
-              label="Gov't ID No."
-              v-model="box3ApplicantGovtIdNo.value.value"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="4">
-            <v-text-field
-              label="Date Issued"
-              v-model="box3ApplicantIdDateIssued.value.value"
-              type="date"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="4">
-            <v-text-field
-              label="Place Issued"
-              v-model="box3ApplicantIdPlaceIssued.value.value"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
+          <v-row dense>
+            <v-col cols="12" md="6">
+              <div class="d-flex flex-column mt-16">
+                <span
+                  class="acknowledgment-line-long d-block mb-1 mx-auto"
+                ></span>
+                <p class="text-body-2 text-center">
+                  (Signature Over Printed Name)
+                </p>
 
-          <v-col cols="12" class="text-subtitle-1 mb-2">BOX 4: WITH MY CONSENT: LOT OWNER / AUTHORIZED REPRESENTATIVE</v-col>
-          <v-col cols="12" md="9">
-            <v-text-field
-              label="Lot Owner / Authorized Representative (Printed Name)"
-              v-model="box4LotOwnerRepName.value.value"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="3">
-            <v-text-field
-              label="Date (Lot Owner/Rep Signature)"
-              v-model="box4LotOwnerRepSignatureDate.value.value"
-              type="date"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12">
-            <v-text-field
-              label="Signature Over Printed Name"
-              density="compact"
-              variant="outlined"
-              readonly
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12">
-            <v-text-field
-              label="Address (Lot Owner/Rep)"
-              v-model="box4LotOwnerRepAddress.value.value"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="4">
-            <v-text-field
-              label="Gov't ID No."
-              v-model="box4LotOwnerRepGovtIdNo.value.value"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="4">
-            <v-text-field
-              label="Date Issued"
-              v-model="box4LotOwnerRepIdDateIssued.value.value"
-              type="date"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12" md="4">
-            <v-text-field
-              label="Place Issued"
-              v-model="box4LotOwnerRepIdPlaceIssued.value.value"
-              density="compact"
-              variant="outlined"
-            ></v-text-field>
-          </v-col>
+                <div class="d-flex align-baseline mt-4">
+                  <span class="text-body-2 mr-2">Date</span>
+                  <v-text-field
+                    v-model="box3ApplicantSignatureDate.value.value"
+                    variant="underlined"
+                  ></v-text-field>
+                </div>
+              </div>
+            </v-col>
 
-          <v-col cols="12" class="text-subtitle-1 mb-2">BOX 5: ACKNOWLEDGMENT / NOTARY PUBLIC</v-col>
+            <v-col cols="12" md="6">
+              <div class="d-flex flex-column mb-4">
+                <v-text-field
+                  label="Address"
+                  v-model="box3ApplicantAddress.value.value"
+                  density="compact"
+                  variant="underlined"
+                  hide-details="auto"
+                ></v-text-field>
+                <div class="d-flex align-baseline mb-2">
+                  <v-text-field
+                    label="Gov’t Issued ID No."
+                    v-model="box3ApplicantGovtIdNo.value.value"
+                    density="compact"
+                    variant="underlined"
+                    hide-details="auto"
+                    class="flex-grow-1 mr-2"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Date Issued"
+                    v-model="box3ApplicantIdDateIssued.value.value"
+                    density="compact"
+                    variant="underlined"
+                    hide-details="auto"
+                    class="mr-2"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Place Issued"
+                    v-model="box3ApplicantIdPlaceIssued.value.value"
+                    density="compact"
+                    variant="underlined"
+                    hide-details="auto"
+                  ></v-text-field>
+                </div>
+              </div>
+            </v-col>
+          </v-row>
+
+          <v-row dense>
+            <!-- BOX 3: APPLICANT -->
+            <v-col cols="12" md="6">
+              <div class="text-subtitle-1 mb-2">BOX 3: APPLICANT</div>
+
+              <div class="d-flex flex-column align-center mt-4">
+                <span class="acknowledgment-line-long d-block mb-1"></span>
+                <p class="text-body-2 text-center">
+                  (Signature Over Printed Name)
+                </p>
+                <v-text-field
+                  label="Date"
+                  v-model="box3ApplicantSignatureDate.value.value"
+                  type="date"
+                  variant="underlined"
+                  hide-details="auto"
+                  class="mt-2"
+                ></v-text-field>
+              </div>
+
+              <v-text-field
+                label="Address"
+                v-model="box3ApplicantAddress.value.value"
+                density="compact"
+                variant="underlined"
+                hide-details="auto"
+                class="my-3"
+              ></v-text-field>
+
+              <div class="d-flex">
+                <v-text-field
+                  label="Gov’t Issued ID No."
+                  v-model="box3ApplicantGovtIdNo.value.value"
+                  density="compact"
+                  variant="underlined"
+                  hide-details="auto"
+                  class="flex-grow-1 mr-2"
+                ></v-text-field>
+                <v-text-field
+                  label="Date Issued"
+                  v-model="box3ApplicantIdDateIssued.value.value"
+                  type="date"
+                  density="compact"
+                  variant="underlined"
+                  hide-details="auto"
+                  class="mr-2"
+                ></v-text-field>
+                <v-text-field
+                  label="Place Issued"
+                  v-model="box3ApplicantIdPlaceIssued.value.value"
+                  density="compact"
+                  variant="underlined"
+                  hide-details="auto"
+                  class="flex-grow-1"
+                ></v-text-field>
+              </div>
+            </v-col>
+
+            <!-- BOX 4: LOT OWNER / AUTHORIZED REPRESENTATIVE -->
+            <v-col cols="12" md="6">
+              <div class="text-subtitle-1 mb-2">
+                BOX 4: WITH MY CONSENT: LOT OWNER / AUTHORIZED REPRESENTATIVE
+              </div>
+
+              <div class="d-flex flex-column align-center mt-4">
+                <span class="acknowledgment-line-long d-block mb-1"></span>
+                <p class="text-body-2 text-center">
+                  (Signature Over Printed Name)
+                </p>
+                <v-text-field
+                  label="Date"
+                  v-model="box4LotOwnerRepSignatureDate.value.value"
+                  type="date"
+                  variant="underlined"
+                  hide-details="auto"
+                  class="mt-2"
+                ></v-text-field>
+              </div>
+
+              <v-text-field
+                label="Address"
+                v-model="box4LotOwnerRepAddress.value.value"
+                density="compact"
+                variant="underlined"
+                hide-details="auto"
+                class="my-3"
+              ></v-text-field>
+
+              <div class="d-flex">
+                <v-text-field
+                  label="Gov’t Issued ID No."
+                  v-model="box4LotOwnerRepGovtIdNo.value.value"
+                  density="compact"
+                  variant="underlined"
+                  hide-details="auto"
+                  class="flex-grow-1 mr-2"
+                ></v-text-field>
+                <v-text-field
+                  label="Date Issued"
+                  v-model="box4LotOwnerRepIdDateIssued.value.value"
+                  type="date"
+                  density="compact"
+                  variant="underlined"
+                  hide-details="auto"
+                  class="mr-2"
+                ></v-text-field>
+                <v-text-field
+                  label="Place Issued"
+                  v-model="box4LotOwnerRepIdPlaceIssued.value.value"
+                  density="compact"
+                  variant="underlined"
+                  hide-details="auto"
+                  class="flex-grow-1"
+                ></v-text-field>
+              </div>
+            </v-col>
+          </v-row>
+
+          <v-col cols="12" class="text-subtitle-1 mb-2"
+            >BOX 5: ACKNOWLEDGMENT / NOTARY PUBLIC</v-col
+          >
           <v-col cols="12" class="text-body-2 mb-2">
-            <span class="font-weight-bold">REPUBLIC OF THE PHILIPPINES</span><br>
+            <span class="font-weight-bold">REPUBLIC OF THE PHILIPPINES</span
+            ><br />
             CITY/MUNICIPALITY OF <span class="acknowledgment-line"></span> S.S.
           </v-col>
           <v-col cols="12" class="text-body-2 mb-2">
-            BEFORE ME, at the City/Municipality of <span class="acknowledgment-line"></span> on <span class="acknowledgment-line-short"></span> personally appeared the following:
+            BEFORE ME, at the City/Municipality of
+            <span class="acknowledgment-line"></span> on
+            <span class="acknowledgment-line-short"></span> personally appeared
+            the following:
           </v-col>
           <v-col cols="12" class="text-body-2 mb-2">
-            <span class="font-weight-bold">APPLICANT (Signature Over Printed Name)</span><br>
-            Full Name: <span class="acknowledgment-line-long"></span><br>
-            Gov't ID No.: <span class="acknowledgment-line"></span>
-            Date Issued: <span class="acknowledgment-line"></span>
-            Place Issued: <span class="acknowledgment-line"></span>
+            <span class="font-weight-bold"
+              >APPLICANT (Signature Over Printed Name)</span
+            ><br />
+            Full Name: <span class="acknowledgment-line-long"></span><br />
+            Gov't ID No.: <span class="acknowledgment-line"></span> Date Issued:
+            <span class="acknowledgment-line"></span> Place Issued:
+            <span class="acknowledgment-line"></span>
           </v-col>
           <v-col cols="12" class="text-body-2 mb-2">
-            <span class="font-weight-bold">LICENSED ARCHITECT OR CIVIL ENGINEER (Full-Time Inspector and Supervisor of Construction Works)</span><br>
-            Full Name: <span class="acknowledgment-line-long"></span><br>
-            Gov't ID No.: <span class="acknowledgment-line"></span>
-            Date Issued: <span class="acknowledgment-line"></span>
-            Place Issued: <span class="acknowledgment-line"></span>
+            <span class="font-weight-bold"
+              >LICENSED ARCHITECT OR CIVIL ENGINEER (Full-Time Inspector and
+              Supervisor of Construction Works)</span
+            ><br />
+            Full Name: <span class="acknowledgment-line-long"></span><br />
+            Gov't ID No.: <span class="acknowledgment-line"></span> Date Issued:
+            <span class="acknowledgment-line"></span> Place Issued:
+            <span class="acknowledgment-line"></span>
           </v-col>
           <v-col cols="12" class="text-body-2 mb-2">
-            whose signatures appear hereinabove, known to me to be the same persons who executed this standard prescribed form and acknowledged to me that the same is their free and voluntary act and deed.
+            whose signatures appear hereinabove, known to me to be the same
+            persons who executed this standard prescribed form and acknowledged
+            to me that the same is their free and voluntary act and deed.
           </v-col>
           <v-col cols="12" class="text-body-2 mb-2">
             WITNESS MY HAND AND SEAL, on the date and place above written.
           </v-col>
           <v-col cols="12" class="text-body-2 mb-2">
-            Doc. No.: <span class="acknowledgment-line-short"></span>
-            Page No.: <span class="acknowledgment-line-short"></span>
-            Book No.: <span class="acknowledgment-line-short"></span>
-            Series of: <span class="acknowledgment-line-short"></span>
+            Doc. No.: <span class="acknowledgment-line-short"></span> Page No.:
+            <span class="acknowledgment-line-short"></span> Book No.:
+            <span class="acknowledgment-line-short"></span> Series of:
+            <span class="acknowledgment-line-short"></span>
           </v-col>
           <v-col cols="12" class="text-body-2 mb-2">
-            NOTARY PUBLIC (Until December <span class="acknowledgment-line-short"></span>)
+            NOTARY PUBLIC (Until December
+            <span class="acknowledgment-line-short"></span>)
           </v-col>
-
         </v-row>
 
         <v-row justify="end" class="mt-4">
@@ -660,24 +780,32 @@
         </v-row>
       </v-form>
 
-      <v-dialog
-        v-model="showCompletionDialog"
-        max-width="500px"
-        persistent
-      >
+      <v-dialog v-model="showCompletionDialog" max-width="500px" persistent>
         <v-card class="pa-6 text-center">
-          <v-card-title class="text-h5 text-blue-darken-2 mb-4">Application Complete!</v-card-title>
+          <v-card-title class="text-h5 text-blue-darken-2 mb-4"
+            >Application Complete!</v-card-title
+          >
           <v-card-text>
             <p class="text-h6 mb-2">Your Application Number is</p>
-            <p class="text-h4 font-weight-bold text-blue-darken-2 mb-6">{{ generatedApplicationNumber }}</p>
+            <p class="text-h4 font-weight-bold text-blue-darken-2 mb-6">
+              {{ generatedApplicationNumber }}
+            </p>
 
-            <p class="text-body-1 mb-4">To proceed with your application, please sign in in your Account</p>
-            <p class="text-body-1 mb-2">User Name: {{ generatedApplicationNumber }}</p>
+            <p class="text-body-1 mb-4">
+              To proceed with your application, please sign in in your Account
+            </p>
+            <p class="text-body-1 mb-2">
+              User Name: {{ generatedApplicationNumber }}
+            </p>
             <p class="text-body-1 mb-6">Password: {{ generatedPassword }}</p>
           </v-card-text>
           <v-card-actions class="justify-end">
-            <v-btn color="primary" @click="continueToDocumentForms" class="mr-2">Continue to Document Forms</v-btn>
-            <v-btn color="secondary" @click="handleDownload">Download Form</v-btn>
+            <v-btn color="primary" @click="continueToDocumentForms" class="mr-2"
+              >Continue to Document Forms</v-btn
+            >
+            <v-btn color="secondary" @click="handleDownload"
+              >Download Form</v-btn
+            >
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -686,23 +814,24 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue';
-import { useField, useForm } from 'vee-validate';
-import { useRouter } from 'vue-router';
+import { ref, computed, watch } from "vue";
+import { useField, useForm } from "vee-validate";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
-
 // Controls the visibility of the completion dialog
 const showCompletionDialog = ref(false);
-const generatedApplicationNumber = ref('');
-const generatedPassword = ref('');
-
+const generatedApplicationNumber = ref("");
+const generatedPassword = ref("");
 // --- Form Fields (no validation rules for simplicity, but can be added with VeeValidate) ---
 // Destructure 'values' from useForm to easily access all form data
-const { handleSubmit, handleReset, values: formValues } = useForm({
+const {
+  handleSubmit,
+  handleReset,
+  values: formValues,
+} = useForm({
   validationSchema: {}, // Define validation rules here if needed, e.g., using Yup
 });
-
 // --- UseField for all form models ---
 // These will automatically map to `formValues`
 const applicationType = useField("applicationType");
@@ -723,7 +852,9 @@ const formOwnership = useField("formOwnership");
 const ownerAddressNo = useField("ownerAddressNo");
 const ownerAddressStreet = useField("ownerAddressStreet");
 const ownerAddressBarangay = useField("ownerAddressBarangay");
-const ownerAddressMunicipal = useField("ownerAddressMunicipal", undefined, { initialValue: "Naga City" });
+const ownerAddressMunicipal = useField("ownerAddressMunicipal", undefined, {
+  initialValue: "Naga City",
+});
 const ownerAddressZipCode = useField("ownerAddressZipCode");
 const contactNumber = useField("contactNumber");
 
@@ -733,7 +864,9 @@ const tctNo = useField("tctNo");
 const taxDecNo = useField("taxDecNo");
 const constructionStreet = useField("constructionStreet");
 const constructionBarangay = useField("constructionBarangay");
-const constructionMunicipal = useField("constructionMunicipal", undefined, { initialValue: "Naga City" });
+const constructionMunicipal = useField("constructionMunicipal", undefined, {
+  initialValue: "Naga City",
+});
 
 const occupancyClassified = useField("occupancyClassified");
 const numberOfUnits = useField("numberOfUnits");
@@ -753,7 +886,9 @@ const expectedDate = useField("expectedDate");
 
 const inspectorAddress = useField("inspectorAddress");
 const architectCivilEngineerName = useField("architectCivilEngineerName");
-const architectEngineerSignatureDate = useField("architectEngineerSignatureDate");
+const architectEngineerSignatureDate = useField(
+  "architectEngineerSignatureDate"
+);
 const prcNo = useField("prcNo");
 const prcValidity = useField("prcValidity");
 const ptrNo = useField("ptrNo");
@@ -774,34 +909,104 @@ const box4LotOwnerRepAddress = useField("box4LotOwnerRepAddress");
 const box4LotOwnerRepGovtIdNo = useField("box4LotOwnerRepGovtIdNo");
 const box4LotOwnerRepIdDateIssued = useField("box4LotOwnerRepIdDateIssued");
 const box4LotOwnerRepIdPlaceIssued = useField("box4LotOwnerRepIdPlaceIssued");
-
 // --- Options for Combo Boxes (from your original code) ---
 const scopeOfWorkOptions = [
-  "NEW CONSTRUCTION", "RENOVATION", "RAISING", "ERECTION", "CONVERSION",
-  "ACCESSORY BUILDING/STRUCTURE", "ADDITION", "REPAIR", "LEGALIZATION OF EXISTING BUILDING",
-  "ALTERATION", "MOVING", "DEMOLITION", "Others",
+  "NEW CONSTRUCTION",
+  "RENOVATION",
+  "RAISING",
+  "ERECTION",
+  "CONVERSION",
+  "ACCESSORY BUILDING/STRUCTURE",
+  "ADDITION",
+  "REPAIR",
+  "LEGALIZATION OF EXISTING BUILDING",
+  "ALTERATION",
+  "MOVING",
+  "DEMOLITION",
+  "Others",
 ];
-
 const occupancyTypesByGroup = {
-  "GROUP A: RESIDENTIAL (DWELLINGS)": ["Single", "Duplex", "Residential R-1, R-2", "Others"],
-  "GROUP B: RESIDENTIAL": ["Hotel", "Motel", "Dormitory", "Townhouse", "Boardinghouse", "Lodging House", "Residential R-3, R-4, R-5", "Others"],
-  "GROUP C: EDUCATIONAL & RECREATIONAL": ["School Building", "School Auditorium", "Civic Center", "Gymnasium", "Clubhouse", "Church, Mosque, Temple, Chapel", "Others"],
-  "GROUP D: INSTITUTIONAL": ["Hospital or Similar Structure", "Home for the Aged", "Government Office", "Others"],
-  "GROUP E: COMMERCIAL": ["Bank", "Store", "Shopping Center/Mall", "Drinking/Dining Establishment", "Shop (i.e. Dress Shop, Tailoring, Barbershop, etc.)", "Others"],
-  "GROUP F: LIGHT INDUSTRIAL": ["Factory/Plant (Using Incombustible/Non-Explosive Materials)", "Others"],
-  "GROUP G: MEDIUM INDUSTRIAL": ["Storage/Warehouse (For Hazardous/Highly Flammable Materials)", "Factory (For Hazardous/Highly Flammable Materials)", "Others"],
-  "GROUP H: ASSEMBLY (OCCUPANT LOAD LESS THAN 1,000)": ["Theater, Auditorium, Convention Hall", "Grandstand/Bleacher", "Others"],
-  "GROUP I: ASSEMBLY (OCCUPANT LOAD 1,000 OR MORE)": ["Coliseum, Sports Complex", "Convention Center and Similar Structure", "Others"],
-  "GROUP J: (J-1) AGRICULTURAL": ["Barn, Granary, Poultry House", "Piggery, Grain Mill, Grain Silo", "Others"],
-  "GROUP J: (J-2) ACCESSORIES": ["Private Carport/Garage, Tower", "Swimming Pool, Fence Over 1.80m", "Steel/Concrete Tank", "Others"],
+  "GROUP A: RESIDENTIAL (DWELLINGS)": [
+    "Single",
+    "Duplex",
+    "Residential R-1, R-2",
+    "Others",
+  ],
+  "GROUP B: RESIDENTIAL": [
+    "Hotel",
+    "Motel",
+    "Dormitory",
+    "Townhouse",
+    "Boardinghouse",
+    "Lodging House",
+    "Residential R-3, R-4, R-5",
+    "Others",
+  ],
+  "GROUP C: EDUCATIONAL & RECREATIONAL": [
+    "School Building",
+    "School Auditorium",
+    "Civic Center",
+    "Gymnasium",
+    "Clubhouse",
+    "Church, Mosque, Temple, Chapel",
+    "Others",
+  ],
+  "GROUP D: INSTITUTIONAL": [
+    "Hospital or Similar Structure",
+    "Home for the Aged",
+    "Government Office",
+    "Others",
+  ],
+  "GROUP E: COMMERCIAL": [
+    "Bank",
+    "Store",
+    "Shopping Center/Mall",
+    "Drinking/Dining Establishment",
+    "Shop (i.e. Dress Shop, Tailoring, Barbershop, etc.)",
+    "Others",
+  ],
+  "GROUP F: LIGHT INDUSTRIAL": [
+    "Factory/Plant (Using Incombustible/Non-Explosive Materials)",
+    "Others",
+  ],
+  "GROUP G: MEDIUM INDUSTRIAL": [
+    "Storage/Warehouse (For Hazardous/Highly Flammable Materials)",
+    "Factory (For Hazardous/Highly Flammable Materials)",
+    "Others",
+  ],
+  "GROUP H: ASSEMBLY (OCCUPANT LOAD LESS THAN 1,000)": [
+    "Theater, Auditorium, Convention Hall",
+    "Grandstand/Bleacher",
+    "Others",
+  ],
+  "GROUP I: ASSEMBLY (OCCUPANT LOAD 1,000 OR MORE)": [
+    "Coliseum, Sports Complex",
+    "Convention Center and Similar Structure",
+    "Others",
+  ],
+  "GROUP J: (J-1) AGRICULTURAL": [
+    "Barn, Granary, Poultry House",
+    "Piggery, Grain Mill, Grain Silo",
+    "Others",
+  ],
+  "GROUP J: (J-2) ACCESSORIES": [
+    "Private Carport/Garage, Tower",
+    "Swimming Pool, Fence Over 1.80m",
+    "Steel/Concrete Tank",
+    "Others",
+  ],
 };
+
+// **ADDED CODE:** Defines options for the Occupancy Group dropdown
+const occupancyGroupOptions = computed(() =>
+  Object.keys(occupancyTypesByGroup)
+);
 
 const currentOccupancyTypeOptions = computed(() => {
   return occupancyGroup.value.value
     ? occupancyTypesByGroup[occupancyGroup.value.value]
     : [];
 });
-
 watch(
   () => occupancyGroup.value.value,
   (newGroup, oldGroup) => {
@@ -819,49 +1024,156 @@ watch(
     }
   }
 );
-
 const barangayOptions = [
-  "Abella (CBD I)", "Bagumbayan Norte", "Bagumbayan Sur", "Balatas", "Calauag",
-  "Cararayan", "Carolina", "Concepcion Grande", "Concepcion Pequeña", "Dayangdang",
-  "Del Rosario", "Dinaga (CBD I)", "Igualdad Interior(CBD I)", "Lerma (CBD II)",
-  "Liboton", "Mabolo", "Pacol", "Panicuason", "Sabang (CBD I)", "San Agustin I",
-  "San Agustin II", "San Agustin Norte", "San Bartolome Norte", "San Bartolome Sur",
-  "Sta. Cruz", "San Felipe", "San Francisco (CBD II)", "San Isidro", "Tabuco (CBD I)",
-  "Tinago", "Triangulo (CBD II)", "Queborac", "Zamora (CBD I)",
+  "Abella",
+  "Bagumbayan Norte",
+  "Bagumbayan Sur",
+  "Balatas",
+  "Calauag",
+  "Cararayan",
+  "Carolina",
+  "Concepcion Grande",
+  "Concepcion Pequeña",
+  "Dayangdang",
+  "Del Rosario",
+  "Dinaga",
+  "Igualdad",
+  "Lerma ",
+  "Liboton",
+  "Mabolo",
+  "Pacol",
+  "Peñafrancia",
+  "Sabang",
+  "San Felipe",
+  "San Francisco ",
+  "San Isidro",
+  "Sta. Cruz",
+  "Tabuco ",
+  "Tinago",
+  "Triangulo ",
 ];
-
 const rawStreetOptions = [
-  "Magsaysay Highway (3)", "Riverside Street", "Maharlika Hiway (1)", "Rosal",
-  "Maharlika Hiway (3)", "Rotonda Street (2)", "Main Ave", "Rotunda",
-  "Main Avenue", "Ruby", "Main Gate of Villakarangahan Subdivision calauag/san felipe Naga City, Cam SUR (1)",
-  "S. Ola St", "Mangga", "Sabila", "Maria Concepcion", "Sacred Heart",
-  "Maria Cristina", "sacred heart street (1)", "Maria Peñafrancia", "Saint Jude",
-  "Mart", "Saint Jude Drive", "Mayflower (1)", "Sampaloc", "Mayon Avenue (3)",
-  "San Antonio", "Mayon Avenue Extension", "San Felipe, Naga City, Bicol, Philippines (1)",
-  "Mercedes", "San Felipe-Pacol-Carolina-Panicuason Road (1)", "Metro Homes",
-  "San Isidro-Carolina Road", "Michael", "San Jose", "Miguel", "San Jose",
-  "Minneapolis St", "San Juan", "Molave", "San Juan", "Molave Road", "San Leandro City",
-  "Molave St", "San Martin", "Mother Francisca", "San Martin", "Naga Central Road",
-  "Naga City Peoples mall (1)", "San Mateo", "Naga Rotonda", "San Miguel", "Naples St",
-  "San Quintin", "Narra", "San Rafael Cararayan, Naga City (1)", "Narra Road", "San Sebastian (1)",
-  "Nicolasa", "Santa Cruz", "Ninoy & Cory Avenue", "Santa Cruz Poro", "Ocampo",
-  "Santiago I Road", "Ocampo 2", "Santiago II Road", "Ojeda", "Santo Niño", "Onyx",
-  "Santol", "Onyx Street", "Santol (1)", "Opal (1)", "Sapphire", "P. Santos (1)",
-  "Sapphire Drive", "P. Santos St.", "Sapphire St", "pacol naga city (2)", "Sierra Madre",
-  "Padre Gracia Street (1)", "Sigma", "Pandan", "SM Access Road", "Panganiban Avenue",
-  "Socorro", "Panganiban Drive (8)", "Solid", "Panicuason Road (1)", "Soriano Avenue",
-  "Parañaque City", "Taal Avenue (2)", "Taculod Road", "Pearl", "Tanlad",
-  "Pearl Dr", "tapaz (1)", "Pedro Santos Avenue (2)", "Temporo Dy", "Penafrancia Ave. Ext (1)",
-  "Tindalo", "Peniafrancia Av. (1)", "Topaz", "Peninsula", "V. Belarmino St",
-  "Perpetual Help", "V. Lukban St", "Peñafrancia Avenue (4)", "Victoria",
-  "Peñafrancia Avenue", "Villa Francia", "Villacorazon Subd. II (1)", "Pisces", "Virgo",
-  "PNR Road (1)", "Waling-waling", "Polo", "Yakal", "Princeton",
+  "Magsaysay Highway (3)",
+  "Riverside Street",
+  "Maharlika Hiway (1)",
+  "Rosal",
+  "Maharlika Hiway (3)",
+  "Rotonda Street (2)",
+  "Main Ave",
+  "Rotunda",
+  "Main Avenue",
+  "Ruby",
+  "Main Gate of Villakarangahan Subdivision calauag/san felipe Naga City, Cam SUR (1)",
+  "S. Ola St",
+  "Mangga",
+  "Maria Concepcion",
+  "Sacred Heart",
+  "Maria Cristina",
+  "sacred heart street (1)",
+  "Maria Peñafrancia",
+  "Saint Jude",
+  "Mart",
+  "Saint Jude Drive",
+  "Mayflower (1)",
+  "Sampaloc",
+  "Mayon Avenue (3)",
+  "San Antonio",
+  "Mayon Avenue Extension",
+  "San Felipe, Naga City, Bicol, Philippines (1)",
+  "Mercedes",
+  "San Felipe-Pacol-Carolina-Panicuason Road (1)",
+  "Metro Homes",
+  "San Jose",
+  "Michael",
+  "San Jose",
+  "Miguel",
+  "San Juan",
+  "Minneapolis St",
+  "San Juan",
+  "Molave",
+  "San Leandro City",
+  "Molave Road",
+  "San Martin",
+  "Molave St",
+  "San Martin",
+  "Mother Francisca",
+  "Naga Central Road",
+  "Naga City Peoples mall (1)",
+  "San Mateo",
+  "Naga Rotonda",
+  "San Miguel",
+  "Naples St",
+  "San Quintin",
+  "Narra",
+  "San Rafael Cararayan, Naga City (1)",
+  "Narra Road",
+  "San Sebastian (1)",
+  "Nicolasa",
+  "Santa Cruz",
+  "Ninoy & Cory Avenue",
+  "Santa Cruz Poro",
+  "Ocampo",
+  "Santiago I Road",
+  "Ocampo 2",
+  "Santiago II Road",
+  "Ojeda",
+  "Santo Niño",
+  "Onyx",
+  "Santol",
+  "Onyx Street",
+  "Santol (1)",
+  "Opal (1)",
+  "Sapphire",
+  "P. Santos (1)",
+  "Sapphire Drive",
+  "P. Santos St.",
+  "Sapphire St",
+  "pacol naga city (2)",
+  "Sierra Madre",
+  "Padre Gracia Street (1)",
+  "Sigma",
+  "Pandan",
+  "SM Access Road",
+  "Panganiban Avenue",
+  "Socorro",
+  "Panganiban Drive (8)",
+  "Solid",
+  "Panicuason Road (1)",
+  "Soriano Avenue",
+  "Parañaque City",
+  "Taal Avenue (2)",
+  "Taculod Road",
+  "Pearl",
+  "Tanlad",
+  "Pearl Dr",
+  "tapaz (1)",
+  "Pedro Santos Avenue (2)",
+  "Temporo Dy",
+  "Penafrancia Ave. Ext (1)",
+  "Tindalo",
+  "Peniafrancia Av. (1)",
+  "Topaz",
+  "Peninsula",
+  "V. Belarmino St",
+  "Perpetual Help",
+  "V. Lukban St",
+  "Peñafrancia Avenue (4)",
+  "Victoria",
+  "Peñafrancia Avenue",
+  "Villa Francia",
+  "Villacorazon Subd. II (1)",
+  "Pisces",
+  "Virgo",
+  "PNR Road (1)",
+  "Waling-waling",
+  "Yakal",
+  "Princeton",
 ];
 
 const streetOptions = computed(() => {
   const uniqueStreets = new Set();
-  rawStreetOptions.forEach(street => {
-    const cleanedStreet = street.replace(/\s*\(\d+\)$/, '').trim();
+  rawStreetOptions.forEach((street) => {
+    const cleanedStreet = street.replace(/\s*\(\d+\)$/, "").trim();
     uniqueStreets.add(cleanedStreet);
   });
   return Array.from(uniqueStreets).sort();
@@ -869,8 +1181,9 @@ const streetOptions = computed(() => {
 
 // Function to generate a random alphanumeric string for app number and password
 const generateRandomString = (length) => {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let result = '';
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
   for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * characters.length));
   }
@@ -880,7 +1193,7 @@ const generateRandomString = (length) => {
 // Handle form submission
 const submitUnifiedApplication = handleSubmit(async (values) => {
   // Simulate API call or form processing
-  console.log('Unified Application Form Submitted:', values);
+  console.log("Unified Application Form Submitted:", values);
 
   // Generate application number and password
   generatedApplicationNumber.value = generateRandomString(10).toUpperCase();
@@ -889,7 +1202,6 @@ const submitUnifiedApplication = handleSubmit(async (values) => {
   // Show the completion dialog
   showCompletionDialog.value = true;
 });
-
 // Function to handle downloading the main form data (optional, but good for completeness)
 const handleDownload = () => {
   const dataToDownload = {
@@ -947,7 +1259,8 @@ const handleDownload = () => {
     inspectorSupervisor: {
       inspectorAddress: inspectorAddress.value.value,
       architectCivilEngineerName: architectCivilEngineerName.value.value,
-      architectEngineerSignatureDate: architectEngineerSignatureDate.value.value,
+      architectEngineerSignatureDate:
+        architectEngineerSignatureDate.value.value,
       prcNo: prcNo.value.value,
       prcValidity: prcValidity.value.value,
       ptrNo: ptrNo.value.value,
@@ -972,7 +1285,6 @@ const handleDownload = () => {
       lotOwnerRepIdPlaceIssued: box4LotOwnerRepIdPlaceIssued.value.value,
     },
   };
-
   const filename = `Unified_Application_Data_${generatedApplicationNumber.value}.json`;
   const jsonStr = JSON.stringify(dataToDownload, null, 2);
   const blob = new Blob([jsonStr], { type: "application/json" });
@@ -992,19 +1304,23 @@ const continueToDocumentForms = () => {
   showCompletionDialog.value = false; // Close the current dialog
 
   // Construct the applicant full name and project full address from the current form data
-  const applicantFullName = `${lastName.value.value || ''}, ${firstName.value.value || ''} ${middleName.value.value || ''}`.trim();
-  const projectFullAddress = `${lotNo.value.value ? 'Lot No. ' + lotNo.value.value + ', ' : ''}` +
-                             `${blkNo.value.value ? 'Blk No. ' + blkNo.value.value + ', ' : ''}` +
-                             `${constructionStreet.value.value || ''}, ` +
-                             `${constructionBarangay.value.value || ''}, ` +
-                             `${constructionMunicipal.value.value || ''}`.trim().replace(/,\s*$/, ''); // Remove trailing comma if any
+  const applicantFullName = `${lastName.value.value || ""}, ${
+    firstName.value.value || ""
+  } ${middleName.value.value || ""}`.trim();
+  const projectFullAddress =
+    `${lotNo.value.value ? "Lot No. " + lotNo.value.value + ", " : ""}` +
+    `${blkNo.value.value ? "Blk No. " + blkNo.value.value + ", " : ""}` +
+    `${constructionStreet.value.value || ""}, ` +
+    `${constructionBarangay.value.value || ""}, ` +
+    `${constructionMunicipal.value.value || ""}`.trim().replace(/,\s*$/, "");
+  // Remove trailing comma if any
 
   router.push({
-    name: 'DocumentForms', // Ensure this matches the 'name' in your router/index.js
+    name: "DocumentForms", // Ensure this matches the 'name' in your router/index.js
     query: {
       applicantFullName: applicantFullName,
       projectFullAddress: projectFullAddress,
-    }
+    },
   });
 };
 </script>
@@ -1041,7 +1357,7 @@ const continueToDocumentForms = () => {
 }
 
 .stepper-item.active .stepper-icon {
-  color: #1976D2; /* Primary color for active icon */
+  color: #1976d2; /* Primary color for active icon */
 }
 
 .stepper-item.active .stepper-text {
